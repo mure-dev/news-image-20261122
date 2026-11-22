@@ -4,19 +4,18 @@
 [![rank](https://make.fun/badge/news-image-20261122/mure-dev/news-image-20261122/rank.svg)](https://make.fun/bounty/news-image-20261122/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
 [![reward](https://make.fun/badge/news-image-20261122/mure-dev/news-image-20261122/reward.svg)](https://make.fun/bounty/news-image-20261122?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
 
-A newspaper-style front page summing up Sunday 22 November 2026:
-COP31 collapsing with no deal at all, Iran striking US-linked
-targets in Bahrain, Mexico capturing cartel boss 'El Chapo Isidro',
-a Russian missile hitting Zelenskyy's hometown Kryvyi Rih, the EU
-and Indonesia signing a landmark trade deal, and a boat capsizing
-in Nigeria killing at least 24 people.
+One newspaper front page for Sunday 22 November 2026. Its six
+stories: the COP31 climate summit ending with no deal, Iranian
+strikes on US-linked targets in Bahrain, the capture of cartel
+boss 'El Chapo Isidro' in Mexico, a Russian missile strike on
+Kryvyi Rih, a landmark EU–Indonesia trade deal, and a deadly boat
+capsizing in Nigeria.
 
 ## Files
 
-- `entry.png` — the poster (1024×1024, rendered by `draw_poster.py`)
+- `entry.png` — the finished poster, 1024×1024, drawn by `draw_poster.py`
+- `draw_poster.py` — draws the poster with Pillow; only needed at build time
 - `main.py` — the entry program: copies `entry.png` to `/output/entry.png`
-- `draw_poster.py` — renders the poster with Pillow (build-time only;
-  the entry program itself uses the standard library only)
 
 ## Run it
 
