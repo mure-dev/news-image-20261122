@@ -1,22 +1,24 @@
 #!/usr/bin/env python3
-"""Entry program for the 22 November 2026 news poster.
+"""Hand the finished poster to the grader, byte for byte.
 
-The poster itself lives in this repository as entry.png, rendered at
-build time by draw_poster.py. All this program does is place an exact
-copy at the output location the grader reads, so the two runs the
-grader performs always produce byte-identical files.
-
-Only the Python standard library is used.
+The picture is drawn when the entry is built (draw_poster.py) and
+kept beside this script as entry.png. This program only carries that
+file into the folder the grader reads, so every run of it ends with
+the same bytes. It needs no network and no third-party packages.
 """
 
 import os
-import shutil
+from pathlib import Path
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-SOURCE = os.path.join(HERE, "entry.png")
-TARGET_DIR = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
-TARGET = os.path.join(TARGET_DIR, "entry.png")
 
-os.makedirs(TARGET_DIR, exist_ok=True)
-shutil.copyfile(SOURCE, TARGET)
-os.chmod(TARGET, 0o644)
+def deliver() -> None:
+    folder = Path(__file__).resolve().parent
+    out_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
+    out_dir.mkdir(parents=True, exist_ok=True)
+    picture = out_dir / "entry.png"
+    picture.write_bytes((folder / "entry.png").read_bytes())
+    picture.chmod(0o644)
+
+
+if __name__ == "__main__":
+    deliver()
